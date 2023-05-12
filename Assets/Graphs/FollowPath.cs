@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FollowPath : MonoBehaviour
 {
+    //Declarando as variáveis e setando os valores delas
     public Transform goal;
     public float speed = 5.0f;
     public float accuracy = 1.0f;
@@ -16,10 +17,12 @@ public class FollowPath : MonoBehaviour
 
     void Start()
     {
+        //Pegando os componentes para as veriáveis
         wps = wpManager.GetComponent<WPManager>().waypoints;
         g = wpManager.GetComponent<WPManager>().graph;
         currentNode = wps[0];
     }
+    //métodos para ir até determinados pontos
     public void GoToHeli()
     {
         g.AStar(currentNode, wps[1]);
@@ -30,20 +33,25 @@ public class FollowPath : MonoBehaviour
         g.AStar(currentNode, wps[6]);
         currentWP = 0;
     }
+    public void GoToFab()
+    {
+        g.AStar(currentNode, wps[9]);
+        currentWP = 0;
+    }
 
     void LateUpdate()
     {
+        //Se o ponto atual for igual aos pontos que faltam, retorna
         if (g.getPathLength() == 0 || currentWP == g.getPathLength())
             return;
-        //O nó que estará mais próximo neste momento
         currentNode = g.getPathPoint(currentWP);
-        //se estivermos mais próximo bastante do nó o tanque se moverá para o próximo
         if (Vector3.Distance(
         g.getPathPoint(currentWP).transform.position,
         transform.position) < accuracy)
         {
             currentWP++;
         }
+        //Se for menos que a quantidade de pontos, o tanque vira e vai para o node
         if (currentWP < g.getPathLength())
         {
             goal = g.getPathPoint(currentWP).transform;
