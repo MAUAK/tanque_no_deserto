@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct Link
 {
+    //Declarando as primeiras variáveis
     public enum direction { UNI, BI }
     public GameObject node1;
     public GameObject node2;
@@ -13,18 +14,22 @@ public struct Link
 
 public class WPManager : MonoBehaviour
 {
+    //Declarando as variáveis de pontos
     public GameObject[] waypoints;
     public Link[] links;
     public Graph graph = new Graph();
 
     void Start()
     {
+        //Se os pontos for mais que zero
         if (waypoints.Length > 0)
         {
+            //Para cada ponto na cena, adiciona um node
             foreach (GameObject wp in waypoints)
             {
                 graph.AddNode(wp);
             }
+            //Adiciona um gráfico para cada ponto
             foreach (Link l in links)
             {
                 graph.AddEdge(l.node1, l.node2);
@@ -36,6 +41,7 @@ public class WPManager : MonoBehaviour
 
     void Update()
     {
+        //Desenha o gráfico
         graph.debugDraw();
     }
 }
