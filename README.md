@@ -1,5 +1,5 @@
 # Tanque_No_Deserto
-## Versão: 1.0
+## Versão: 2.0
 ## Status do Projeto: ✔️ Concluído
 
 ## Tópicos
