@@ -47,7 +47,7 @@ Windows;
 Unity; 
 
 ## Como rodar a aplicação 
-O usúario deverá abrir o jogo e clicar nos botões em que lugar ele quer ir..
+O usúario deverá abrir o jogo e clicar nos botões em que lugar ele quer ir.
 
 ## Testes realizados
 
